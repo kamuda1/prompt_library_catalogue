@@ -6,9 +6,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 class FileBrowserApp:
-    print('In the class')
     def __init__(self, master):
-        print('In the init block')
         self.master = master
         self.master.title("File Browser")
 
@@ -102,7 +100,6 @@ class FileBrowserApp:
 
 
 if __name__ == "__main__":
-    print('in the main block')
     root = tk.Tk()
     app = FileBrowserApp(root)
     root.mainloop()
