@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "prompt-library"
+version = "0.1.0"
+description = ""
+authors = ["Mark Kamuda <mark.kamuda@gmail.com>"]
+readme = "README.md"
+license = "MIT"
+packages = [{include = "prompt_library"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+scikit-learn = "^1.2.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
