@@ -5,8 +5,8 @@ Make sure you have [Poetry](https://python-poetry.org/docs/#installation) instal
 Clone the repository:
 
 ```bash
-git clone https://github.com/your_username/your_project_name.git
-cd your_project_name
+git clone https://github.com/kamuda1/prompt_library_catalogue.git
+cd prompt_library_catalogue
 ```
 
 Install the project and its dependencies:
