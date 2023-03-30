@@ -1,3 +1,4 @@
+import json
 import os
 import tkinter as tk
 from tkinter import ttk
@@ -52,6 +53,16 @@ class FileBrowserApp:
 
         self.directory = directory
 
+    def load_content_from_file(self, file_path):
+        with open(file_path, 'r', encoding='utf-8') as file:
+            filename, file_extension = os.path.splitext(file_path)
+            if file_extension == '.json':
+                content_json = json.load(file)
+                content = content_json['nodes'][0]['text']
+            else:
+                content = file.read()
+        return content
+
     def display_file_content(self, event):
         selection = event.widget.curselection()
         if not selection:
@@ -60,8 +71,7 @@ class FileBrowserApp:
         file_name = event.widget.get(selection[0])
         file_path = os.path.join(self.directory, file_name)
 
-        with open(file_path, 'r', encoding='utf-8') as file:
-            content = file.read()
+        content = self.load_content_from_file(file_path)
 
         self.file_content.delete(1.0, tk.END)
         self.file_content.insert(tk.INSERT, content)
@@ -84,8 +94,8 @@ class FileBrowserApp:
 
         for file_name in file_names:
             file_path = os.path.join(self.directory, file_name)
-            with open(file_path, 'r', encoding='utf-8') as file:
-                file_contents.append(file.read())
+            content = self.load_content_from_file(file_path)
+            file_contents.append(content)
 
         # Calculate similarity using TfidfVectorizer and cosine_similarity
         vectorizer = TfidfVectorizer()
